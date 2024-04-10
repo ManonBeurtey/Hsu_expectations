@@ -18,9 +18,6 @@ low_cue_frequency = 1046
 # Target tones (High and Low spectral expectations)
 high_target_tone = 1975 
 low_target_range = [1725, 1775, 1825, 1875, 1925, 2025, 2075, 2125, 2175, 2225]
-for low_target_tone in low_target_range: #NON
-    return low_target_tone #NON
-    
 
 # Stimuli
 high_cue = expyriment.stimuli.Tone(cue_duration, frequency = high_cue_frequency)
@@ -32,8 +29,9 @@ low_cue.preload()
 high_target_tone = expyriment.stimuli.Tone(target_duration, frequency = high_target_tone)
 high_target_tone.preload()
 
-low_target_tone = expyriment.stimuli.Tone(target_duration, frequency = low_target_tone) #NON
-low_target_tone.preload() #NON
+for f in low_target_range:
+    low_target_tone = expyriment.stimuli.Tone(target_duration, frequency = f) 
+low_target_tone.preload()
 
 # Creation of the blocks
 Tblock = expyriment.design.Block(name="Temporal condition block") 
