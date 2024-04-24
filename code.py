@@ -1,3 +1,45 @@
+import random
+import time
+
+temporal_expectation = ["fixed_SOA","variable_SOA"]
+spectral_expectation = ["fixed_spectral", "variable_spectral"]
+temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*50
+spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
+
+def get_trial_parameters(spectral, temporal):
+    if temporal == "fixed_SOA":
+        cue_freq = 1318
+        SOA = 1250
+    else:  # variable_SOA
+        cue_freq = 1046
+        SOA = random.choice([20, 30])
+    if spectral == "fixed_spectral":
+        target_freq = 1975
+    else: # variable spectral
+        target_freq = random.choice([40, 50])
+    return cue_freq, SOA, target_freq 
+
+
+def run_trial(cue_freq, SOA, target_freq):
+    cue_sound = "tonpur_{cue_freq}"
+    target_sound = "tonpur_{target_freq}"
+    print(cue_sound)
+    time.sleep(SOA/1000.0) # programmation défensive
+    print(target_sound)
+
+for i, block in enumerate(spectral_expectation_blocks):
+    spectral_expectation_value = block 
+    random.shuffle(temporal_expectation_trials)
+    for j, trial in enumerate(temporal_expectation_trials):
+        temporal_expectation_value = trial
+        cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value)
+        print(i, j)
+        run_trial(cue_freq, SOA, target_freq)
+        
+
+
+#######################################################################################################
+
 import expyriment
 import random
 
@@ -50,5 +92,8 @@ for i in range (N//2):
     Tblock.add_trial(trial)
 
 Tblock.shuffle_trials()
+Sblock.shuffle_trials()
+
 exp.add_block(Tblock) # add the block to the experiment
+exp.add_block(Sblock) # add the block to the experiment
 

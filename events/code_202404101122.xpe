@@ -1,0 +1,8 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed Apr 10 2024 11:22:43
+#sha1: 5c3263
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+356,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_n1je89md\\freq1318_dur150.0_0ar0by6j.wav'

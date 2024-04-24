@@ -1,0 +1,78 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed Apr 10 2024 11:20:03
+#sha1: 1b11f5
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+4586,design,log,
+#design: #exp: Simple Audio  Experiment
+#design: #dvn: tone,waiting_time,key,rt
+#design: block_cnt,block_id,trial_cnt,trial_id,tone
+#design: 0,0,0,16,2
+#design: 0,0,1,10,2
+#design: 0,0,2,17,2
+#design: 0,0,3,1,1
+#design: 0,0,4,0,1
+#design: 0,0,5,8,1
+#design: 0,0,6,19,2
+#design: 0,0,7,4,1
+#design: 0,0,8,12,2
+#design: 0,0,9,7,1
+#design: 0,0,10,3,1
+#design: 0,0,11,6,1
+#design: 0,0,12,11,2
+#design: 0,0,13,5,1
+#design: 0,0,14,14,2
+#design: 0,0,15,13,2
+#design: 0,0,16,9,1
+#design: 0,0,17,18,2
+#design: 0,0,18,15,2
+#design: 0,0,19,2,1
+4587,design,logged,
+4587,Experiment,started
+4633,Stimulus,presented,0
+4733,Keyboard,received,304,wait
+4736,Stimulus,presented,3
+8071,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+10073,Keyboard,received,None,wait
+13904,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+15906,Keyboard,received,None,wait
+19768,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+21770,Keyboard,received,None,wait
+25081,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+27083,Keyboard,received,None,wait
+30307,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+32308,Keyboard,received,None,wait
+35530,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+37532,Keyboard,received,None,wait
+40620,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+42622,Keyboard,received,None,wait
+45839,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+47840,Keyboard,received,None,wait
+51390,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+53393,Keyboard,received,None,wait
+57044,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+59046,Keyboard,received,None,wait
+62852,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+64855,Keyboard,received,None,wait
+68621,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+70624,Keyboard,received,None,wait
+73798,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+75799,Keyboard,received,None,wait
+79588,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+81589,Keyboard,received,None,wait
+85061,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+87068,Keyboard,received,None,wait
+90463,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+92464,Keyboard,received,None,wait
+96385,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+98387,Keyboard,received,None,wait
+101948,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+104693,Keyboard,received,None,wait
+108612,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq560_dur100.0_1tb8oa7m.wav'
+110614,Keyboard,received,None,wait
+114075,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_i1sfn526\\freq440_dur100.0_j6t75phu.wav'
+116077,Keyboard,received,None,wait
+116077,Experiment,ended
+116084,Data,saved
