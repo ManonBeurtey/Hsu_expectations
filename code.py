@@ -17,8 +17,8 @@ def steps(start_range1, stop_range1, start_range2, stop_range2, number):
     end1 = numpy.log10(stop_range1)
     start2 = numpy.log10(start_range2)
     end2 = numpy.log10(stop_range2)
-    ranged_list = list(numpy.concatenate((numpy.logspace(start1, end1, num=number), numpy.logspace(start2, end2, num=number))))
-    return ranged_list
+    ranged_int_list = list(numpy.int_(numpy.concatenate((numpy.logspace(start1, end1, num=number), numpy.logspace(start2, end2, num=number)))))
+    return ranged_int_list
 
 # Variables
 N = 100 # number of trials
@@ -29,10 +29,10 @@ high_cue_freq = 1318 # Cues frequencies
 low_cue_freq = 1046
 
 fixed_SOA = 1250 # SOA duration
-variable_SOA = list(steps(350, 950, 1550, 2150, 3))
+variable_SOA = steps(350, 950, 1550, 2150, 3)
 
 fixed_target_freq = 1975 # Targets frequencies
-variable_target_freq = list(steps(1725, 1925, 2025, 2225, 5))
+variable_target_freq = steps(1725, 1925, 2025, 2225, 5)
 
 # Lists variable SOA and variable targets
 variable_target_list = variable_target_freq * (N//2)
@@ -48,13 +48,13 @@ def get_trial_parameters(spectral, temporal):
         SOA = fixed_SOA
     else:  # variable_SOA
         cue_freq = low_cue_freq
-        for variable in variable_SOA_list:
-            SOA = variable
+        for var in variable_SOA_list:
+            SOA = var
     if spectral == "fixed_spectral":
         target_freq = fixed_target_freq
     else: # variable spectral
-        for target in variable_target_list:
-            target_freq = target
+        for tar in variable_target_list:
+            target_freq = tar
     return cue_freq, SOA, target_freq
 
 # Run experiment
