@@ -1,4 +1,6 @@
+import expyriment
 import random
+import numpy
 import sleep
 
 temporal_expectation = ["fixed_SOA","variable_SOA"]
@@ -11,19 +13,53 @@ random.shuffle(spectral_expectation_blocks) # bloks are counterbalanced
 print(temporal_expectation_trials, spectral_expectation_blocks)
 
 
+# logarithmic steps for stimuli 
+def steps(start_range1, stop_range1, start_range2, stop_range2, number):
+    start1 = numpy.log10(start_range1)
+    end1 = numpy.log10(stop_range1)
+    start2 = numpy.log10(start_range2)
+    end2 = numpy.log10(stop_range2)
+    result = numpy.concatenate((numpy.logspace(start1, end1, num=number), numpy.logspace(start2, end2, num=number)))
+    return result
+
+# Variables
+N = 100 # number of trials
+target_duration = 50 
+cue_duration = 150
+
+high_cue_freq = 1318 # Cues frequencies
+low_cue_freq = 1046
+
+fixed_SOA = 1250 # SOA duration
+variable_SOA = list(steps(350, 950, 1550, 2150, 3))
+
+fixed_target_freq = 1975 # Targets frequencies
+variable_target_freq = list(steps(1725, 1925, 2025, 2225, 5))
+
+# Lists variable SOA and variable targets
+variable_target_list = variable_target_freq * (N//2)
+random.shuffle(variable_target_list)
+variable_SOA_list = variable_SOA * (N//2)
+random.shuffle(variable_SOA_list)
+
+# Trials parameters
+
 def get_trial_parameters(spectral, temporal):
     if temporal == "fixed_SOA":
-        cue_freq = 1318
-        SOA = 1250
+        cue_freq = high_cue_freq
+        SOA = fixed_SOA
     else:  # variable_SOA
-        cue_freq = 1046
-        SOA = random.choice([20, 30])
+        cue_freq = low_cue_freq
+        for variable in variable_SOA_list:
+            SOA = variable
     if spectral == "fixed_spectral":
-        target_freq = 1975
+        target_freq = fixed_target_freq
     else: # variable spectral
-        target_freq = random.choice([40, 50])
-    return cue_freq, SOA, target_freq 
+        for target in variable_target_list:
+            target_freq = target
+    return cue_freq, SOA, target_freq
 
+# Run experiment
 
 def run_trial(cue_freq, SOA, target_freq):
     cue_sound = "tonpur_{cue_freq}"
@@ -40,74 +76,33 @@ for i, block in enumerate(spectral_expectation_blocks):
         cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value)
         print(i, j)
         run_trial(cue_freq, SOA, target_freq)
-        
 
 ######## previous draft code ###########
-
-import expyriment
-import random
-import numpy
 
 # Initialisation
 exp = expyriment.design.Experiment(name="Hsu task") 
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
 
-N = 100 # number of trials
-target_duration = 50 # Target duration
-cue_duration = 150 # Cue duration
-
-# logarithmic steps for stimuli 
-def log(a, b, c, d, step):
-    start1 = numpy.log10(a)
-    end1 = numpy.log10(b)
-    start2 = numpy.log10(c)
-    end2 = numpy.log10(d)
-    result = numpy.concatenate((numpy.logspace(start1, end1, num=step), numpy.logspace(start2, end2, num=step)))
-    return(result)
-
 # Cue stimuli
-high_cue_f = 1318
-low_cue_f = 1046
 high_cue = expyriment.stimuli.Tone(cue_duration, frequency = high_cue_f)
 high_cue.preload()
 low_cue = expyriment.stimuli.Tone(cue_duration, frequency = low_cue_f)
 low_cue.preload()
 
-# SOA
-high_SOA = 1250 
-low_SOA = log(350, 950, 1550, 2150, 3)
 
-#Target tone - à refaire
-high_target_f = [1975]
-low_target_f = log(1725, 1925, 2025, 2225, 5)
-low_targets = [low_target_f]* (N//2)
-random.shuffle(low_targets)
-high_targets = [high_target_f]* (N//2)
-targets = high_targets+low_targets
-random.shuffle(targets)
 
-# Temporal block
-Tblock = expyriment.design.Block(name="Temporal condition block") 
+block1 = expyriment.design.Block(name="block1") 
+block2 = expyriment.design.Block(name="block2") 
 
 high_cue = expyriment.stimuli.Tone(cue_duration, frequency = high_cue_f)
 high_cue.preload()
 
 low_cue = expyriment.stimuli.Tone(cue_duration, frequency = low_cue_f)
 low_cue.preload()
-
-cues = [high_cue, low_cue] * N//2 
-random.shuffle(cues)
-
-# Spectral block
-Sblock = expyriment.design.Block(name="Spectral condition block") 
 
 high_target_tone = expyriment.stimuli.Tone(target_duration, frequency = high_target_f)
 high_target_tone.preload()
-
-for f in low_target_f:
-    low_target_tone = expyriment.stimuli.Tone(target_duration, frequency = f) 
-low_target_tone.preload()
 
 #Experiment
 
@@ -131,11 +126,6 @@ for i in range (N//2):
     trial.set_factor('cue', "high")
     Tblock.add_trial(trial)
 
-for i in range (N//2):    
-    trial = expyriment.design.Trial()
-    trial.add_stimulus(low_cue)
-    trial.set_factor('cue', "low")
-    Tblock.add_trial(trial)
 
 Tblock.shuffle_trials()
 Sblock.shuffle_trials()
