@@ -10,8 +10,6 @@ random.shuffle(temporal_expectation_trials) # trials are counterbalanced
 
 spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
 random.shuffle(spectral_expectation_blocks) # bloks are counterbalanced
-print(temporal_expectation_trials, spectral_expectation_blocks)
-
 
 # logarithmic steps for stimuli 
 def steps(start_range1, stop_range1, start_range2, stop_range2, number):
@@ -19,8 +17,8 @@ def steps(start_range1, stop_range1, start_range2, stop_range2, number):
     end1 = numpy.log10(stop_range1)
     start2 = numpy.log10(start_range2)
     end2 = numpy.log10(stop_range2)
-    result = numpy.concatenate((numpy.logspace(start1, end1, num=number), numpy.logspace(start2, end2, num=number)))
-    return result
+    ranged_list = list(numpy.concatenate((numpy.logspace(start1, end1, num=number), numpy.logspace(start2, end2, num=number))))
+    return ranged_list
 
 # Variables
 N = 100 # number of trials
