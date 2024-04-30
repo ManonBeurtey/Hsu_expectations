@@ -1,15 +1,15 @@
 import expyriment
 import random
 import numpy
-import sleep
 
-temporal_expectation = ["fixed_SOA","variable_SOA"]
+# BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
-temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*50
-random.shuffle(temporal_expectation_trials) # trials are counterbalanced
-
 spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
-random.shuffle(spectral_expectation_blocks) # bloks are counterbalanced
+random.shuffle(spectral_expectation_blocks) # 12 bloks counterbalanced
+
+# TRIALS
+temporal_expectation = ["fixed_SOA","variable_SOA"]
+temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*50
 
 # logarithmic steps for stimuli 
 def steps(start_range1, stop_range1, start_range2, stop_range2, number):
@@ -37,8 +37,14 @@ variable_target_freq = steps(1725, 1925, 2025, 2225, 5)
 # Lists variable SOA and variable targets
 variable_target_list = variable_target_freq * (N//2)
 random.shuffle(variable_target_list)
+
 variable_SOA_list = variable_SOA * (N//2)
 random.shuffle(variable_SOA_list)
+
+# Initialisation
+exp = expyriment.design.Experiment(name="Hsu task") 
+expyriment.control.set_develop_mode(on=True)
+expyriment.control.initialize(exp)
 
 # Trials parameters
 
@@ -59,13 +65,17 @@ def get_trial_parameters(spectral, temporal):
 
 # Run experiment
 
-def run_trial(cue_freq, SOA, target_freq):
-    cue_sound = "tonpur_{cue_freq}"
-    target_sound = "tonpur_{target_freq}"
-    print(cue_sound)
-    time.sleep(SOA/1000.0) # programmation défensive
-    print(target_sound)
-
+def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
+    cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
+    cue_sound.preload()
+    target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
+    target_sound.preload()
+    expyriment.control.start()
+    cue_sound.present()
+    exp.clock.wait(SOA)
+    target_sound.present()
+    
+   
 for i, block in enumerate(spectral_expectation_blocks):
     spectral_expectation_value = block 
     random.shuffle(temporal_expectation_trials)
@@ -75,82 +85,5 @@ for i, block in enumerate(spectral_expectation_blocks):
         print(i, j)
         run_trial(cue_freq, SOA, target_freq)
 
-######## previous draft code ###########
-
-# Initialisation
-exp = expyriment.design.Experiment(name="Hsu task") 
-expyriment.control.set_develop_mode(on=True)
-expyriment.control.initialize(exp)
-
-# Cue stimuli
-high_cue = expyriment.stimuli.Tone(cue_duration, frequency = high_cue_f)
-high_cue.preload()
-low_cue = expyriment.stimuli.Tone(cue_duration, frequency = low_cue_f)
-low_cue.preload()
-
-
-
-block1 = expyriment.design.Block(name="block1") 
-block2 = expyriment.design.Block(name="block2") 
-
-high_cue = expyriment.stimuli.Tone(cue_duration, frequency = high_cue_f)
-high_cue.preload()
-
-low_cue = expyriment.stimuli.Tone(cue_duration, frequency = low_cue_f)
-low_cue.preload()
-
-high_target_tone = expyriment.stimuli.Tone(target_duration, frequency = high_target_f)
-high_target_tone.preload()
-
-#Experiment
-
-#A refaire:
-for temporal in cues:
-    if temporal == high_cue:
-        trial = expyriment.design.Trial()
-        high_cue.present()
-        exp.clock.wait(high_inter)
-        high_target_tone.present()
-        trial.add_stimulus(high_cue)
-        trial.set_factor('cue', "high")
-        Tblock.add_trial(trial)
-    else:
-        .....
-
-
-for i in range (N//2): 
-    trial = expyriment.design.Trial()
-    trial.add_stimulus(high_cue)
-    trial.set_factor('cue', "high")
-    Tblock.add_trial(trial)
-
-
-Tblock.shuffle_trials()
-Sblock.shuffle_trials()
-
-exp.add_block(Tblock) # add the block to the experiment
-exp.add_block(Sblock) # add the block to the experiment
-
-
-kb = exp.keyboard  # response device
-exp.add_data_variable_names(['tone', 'waiting_time', 'key', 'rt'])
-
-## Run the experiment
-expyriment.control.start()
-
-instructions.present()
-kb.wait()
-
-fixcross.present(update=True, clear=True)
-
-for b in exp.blocks:
-    for t in b.trials:
-        exp.clock.wait(ITI)
-        tone = t.stimuli[0]
-        waiting_time = 1000 + random.random() * 1000 
-        exp.clock.wait(waiting_time)
-        tone.present()
-        key, rt = kb.wait(keys='j', duration=2000)
-        exp.data.add([t.get_factor('tone'), waiting_time, key, rt])
-
 expyriment.control.end()
+
