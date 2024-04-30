@@ -56,7 +56,6 @@ random.shuffle(variable_target_list)
 variable_SOA_list = variable_SOA * (N//2)
 random.shuffle(variable_SOA_list)
 
-# Trials parameters
 
 def get_trial_parameters(spectral, temporal):
     if temporal == "fixed_SOA":
@@ -73,8 +72,6 @@ def get_trial_parameters(spectral, temporal):
             target_freq = tar
     return cue_freq, SOA, target_freq
 
-# Experiment function
-
 def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
     cue_sound.preload()
@@ -89,7 +86,7 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     return key, rt, start_time 
     
 
-# Experiment running
+# Running experiment
 
 instructions.present()
    
