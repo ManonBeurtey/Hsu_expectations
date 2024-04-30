@@ -46,6 +46,8 @@ exp = expyriment.design.Experiment(name="Hsu task")
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
 
+kb = expyriment.io.Keyboard()
+
 # Trials parameters
 
 def get_trial_parameters(spectral, temporal):
@@ -70,11 +72,19 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     cue_sound.preload()
     target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
     target_sound.preload()
+
     expyriment.control.start()
     cue_sound.present()
     exp.clock.wait(SOA)
     target_sound.present()
+    start_time = exp.clock.time
+    key, rt = kb.wait()
+    return key, rt - start_time 
     
+
+exp.data_variable_names = ["Block", "Trial", "Cue_Frequency", "SOA", "Target_Frequency", "Key_Pressed", "Response_Time"]
+
+ 
    
 for i, block in enumerate(spectral_expectation_blocks):
     spectral_expectation_value = block 
@@ -83,7 +93,9 @@ for i, block in enumerate(spectral_expectation_blocks):
         temporal_expectation_value = trial
         cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value)
         print(i, j)
-        run_trial(cue_freq, SOA, target_freq)
+        key, response_time = run_trial(cue_freq, SOA, target_freq)
+        exp.data.add([i, j, cue_freq, SOA, target_freq, key, response_time])
 
 expyriment.control.end()
+
 
