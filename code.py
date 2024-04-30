@@ -2,11 +2,19 @@ import expyriment
 import random
 import numpy
 
-# Initialisation
+# Initialisation of the experiment
 
 exp = expyriment.design.Experiment(name="Hsu task") 
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
+
+instructions = expyriment.stimuli.TextScreen("Instructions",
+                                             "You will hear a successions of pairs of tones; Press the 'J' key as quickly as possible upon hearing the second tone. Press the SPACEBAR to start")
+
+kb = expyriment.io.Keyboard()
+
+exp.data_variable_names = ["Cue","SOA","target","key","response time"]
+
 
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
@@ -17,7 +25,7 @@ random.shuffle(spectral_expectation_blocks) # 12 blocks counterbalanced
 temporal_expectation = ["fixed_SOA","variable_SOA"]
 temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*50
 
-# logarithmic steps for low expectations conditions (SOA and target)
+# Logarithmic steps for low expectations conditions (SOA and target)
 def steps(start_range1, stop_range1, start_range2, stop_range2, number):
     start1 = numpy.log10(start_range1)
     end1 = numpy.log10(stop_range1)
@@ -48,12 +56,6 @@ random.shuffle(variable_target_list)
 variable_SOA_list = variable_SOA * (N//2)
 random.shuffle(variable_SOA_list)
 
-# Instructions
-instructions = expyriment.stimuli.TextScreen("Instructions",
-                                             "You will hear a successions of pairs of tones; Press the 'J' key as quickly as possible upon hearing the second tone. Press the SPACEBAR to start")
-
-kb = expyriment.io.Keyboard()
-
 # Trials parameters
 
 def get_trial_parameters(spectral, temporal):
@@ -71,7 +73,7 @@ def get_trial_parameters(spectral, temporal):
             target_freq = tar
     return cue_freq, SOA, target_freq
 
-# Experiment
+# Experiment function
 
 def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
@@ -87,10 +89,7 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     return key, rt, start_time 
     
 
-
-
-
-exp.data_variable_names = ["Cue","SOA","target","key","response time"]
+# Experiment running
 
 instructions.present()
    
