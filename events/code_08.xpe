@@ -1,0 +1,24 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Tue Apr 30 2024 09:44:42
+#sha1: 576e47
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+350,stdout,received,'0 0'
+937,design,log,
+#design: #exp: Hsu task
+#design: block_cnt,block_id,trial_cnt,trial_id
+937,design,logged,
+937,Experiment,started
+937,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_1588gzp0\\freq1318_dur150.0_lms7ogyk.wav'
+2187,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_1588gzp0\\freq1975_dur50.0_40iqt76f.wav'
+2187,stdout,received,'0 1'
+2216,stderr,received,'Traceback (most recent call last):'
+2216,stderr,received,'  File "code.py", line 86, in <module>'
+2216,stderr,received,'    run_trial(cue_freq, SOA, target_freq)'
+2217,stderr,received,'  File "code.py", line 73, in run_trial'
+2217,stderr,received,'    expyriment.control.start()'
+2217,stderr,received,'  File "C:\\Users\\manon\\anaconda3\\envs\\expyriment\\lib\\site-packages\\expyriment\\control\\_experiment_control.py", line 73, in start'
+2217,stderr,received,'    raise Exception("Experiment is already started!")'
+2218,stderr,received,'Exception: Experiment is already started!'

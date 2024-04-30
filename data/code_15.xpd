@@ -1,0 +1,12 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpd-file, coding: cp1252
+#date: Tue Apr 30 2024 10:17:33
+#--EXPERIMENT INFO
+#e mainfile: code.py
+#e sha1: 636618
+#e modules: 
+#e Experiment: Hsu task
+#e no between subject factors
+#--SUBJECT INFO
+#s id: 15
+subject_id,Block,Trial,Cue_Frequency,SOA,Target_Frequency,Key_Pressed,Response_Time
+15,0,0,1318,1250,1975,32,-4694
