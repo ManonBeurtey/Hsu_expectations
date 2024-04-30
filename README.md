@@ -4,11 +4,12 @@ Two cue tones of distinct frequencies (1318 Hz and 1046 Hz; 150 ms duration) sig
 Note that when using the term "chosen" it means not randomly, but with the exact same frequency, but shuffled.
 
 Code: 
-* Initialisation of expyriment
+* Importing packages
+* Initialisation of the experiment
 * Definition of the levels of the conditions within blocks and trials.
 * Definition of the function that calculated the logarithmic steps
 * Definition of the variables (cues frequencies, target frequencies, SOA, using the steps function)
 * Making two shuffle list of variable_SOA and variable_target
-* Making function linking blocks/trials with sitmuli
-* Making function linking stimuli with tones loading and presenting, runnning experiment
-* Making for loop in order to link everything together
+* Making "get_trial_parameters" function linking blocks/trials with sitmuli
+* Making "run_trial" function linking stimuli with tones loading and presenting, runnning experiment
+* Running experiment making for loop in order to link everything together
