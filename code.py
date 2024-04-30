@@ -2,6 +2,12 @@ import expyriment
 import random
 import numpy
 
+# Initialisation
+
+exp = expyriment.design.Experiment(name="Hsu task") 
+expyriment.control.set_develop_mode(on=True)
+expyriment.control.initialize(exp)
+
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
 spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
@@ -72,7 +78,6 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     cue_sound.preload()
     target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
     target_sound.preload()
-
     expyriment.control.start()
     cue_sound.present()
     exp.clock.wait(SOA)
@@ -83,11 +88,7 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     
 
 
-# Initialisation
 
-exp = expyriment.design.Experiment(name="Hsu task") 
-expyriment.control.set_develop_mode(on=True)
-expyriment.control.initialize(exp)
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
 
