@@ -11,10 +11,10 @@ expyriment.control.initialize(exp)
 instructions = expyriment.stimuli.TextScreen("Instructions",
                                              "You will hear a successions of pairs of tones; Press the 'J' key as quickly as possible upon hearing the second tone. Press the SPACEBAR to start")
 
-kb = expyriment.io.Keyboard()
+
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
-
+blankscreen = expyriment.stimuli.BlankScreen()
 
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
@@ -76,30 +76,36 @@ def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
     cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
     cue_sound.preload()
     target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
-    target_sound.preload()
-    expyriment.control.start()
+    target_sound.preload()    
+    blankscreen.present()
     cue_sound.present()
     exp.clock.wait(SOA)
     target_sound.present()
-    start_time = exp.clock.time
-    key, rt = kb.wait()
-    return key, rt, start_time 
-    
+    key, rt = exp.keyboard.wait()
+    exp.clock.wait(1250)
+    return key, rt
 
 # Running experiment
-
+expyriment.control.start(skip_ready_screen=True)
 instructions.present()
-   
+exp.keyboard.wait()
+
 for i, block in enumerate(spectral_expectation_blocks):
     spectral_expectation_value = block 
     random.shuffle(temporal_expectation_trials)
     for j, trial in enumerate(temporal_expectation_trials):
         temporal_expectation_value = trial
         cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value)
-        key, response_time = run_trial(cue_freq, SOA, target_freq)
-        exp.data.add([cue_freq, SOA, target_freq, key, response_time])
+        key, rt = run_trial(cue_freq, SOA, target_freq)
+        print(i,j)
+        exp.data.add([cue_freq, SOA, target_freq, key, rt])
+
+keys = exp.keyboard.check()
+if expyriment.misc.constants.K_ESCAPE in keys:
+    expyriment.control.end()
+    print("Experiment terminated by the participant.")
+    exit()  # Terminates the script
 
 
-expyriment.control.end()
 
 
