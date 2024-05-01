@@ -8,10 +8,10 @@ exp = expyriment.design.Experiment(name="Hsu task")
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
 
-instructions = expyriment.stimuli.TextScreen("Instructions",
-                                             "You will hear a successions of pairs of tones; Press the 'J' key as quickly as possible upon hearing the second tone. Press the SPACEBAR to start")
-
-
+instructions = expyriment.stimuli.TextScreen("INSTRUCTIONS",
+                                             " You will hear pairs of tones. "
+                                             " Press the SPACEBAR as quickly as possible upon hearing the second tone. " 
+                                             " Press ENTER to start")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
 blankscreen = expyriment.stimuli.BlankScreen()
@@ -104,7 +104,7 @@ keys = exp.keyboard.check()
 if expyriment.misc.constants.K_ESCAPE in keys:
     expyriment.control.end()
     print("Experiment terminated by the participant.")
-    exit()  # Terminates the script
+    exit()
 
 
 
