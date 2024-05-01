@@ -1,0 +1,19 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed May 01 2024 12:23:14
+#sha1: 428555
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+316,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+316,design,logged,
+316,Experiment,started
+316,stderr,received,'Traceback (most recent call last):'
+316,stderr,received,'  File "code.py", line 99, in <module>'
+317,stderr,received,'    key, rt = run_trial(cue_freq, SOA, target_freq)'
+317,stderr,received,'  File "code.py", line 81, in run_trial'
+318,stderr,received,'    expyriment.instructions.present()'
+318,stderr,received,"AttributeError: module 'expyriment' has no attribute 'instructions'"

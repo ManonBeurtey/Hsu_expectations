@@ -7,11 +7,10 @@ import numpy
 exp = expyriment.design.Experiment(name="Hsu task") 
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
-
-instructions = expyriment.stimuli.TextScreen("INSTRUCTIONS",
+instructions = expyriment.stimuli.TextScreen("Instructions", 
                                              " You will hear pairs of tones. "
-                                             " Press the SPACEBAR as quickly as possible upon hearing the second tone. " 
-                                             " Press ENTER to start")
+                                             "Press the SPACEBAR as quickly as possible upon hearing the second tone. " 
+                                             "Press ENTER to start", text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
 blankscreen = expyriment.stimuli.BlankScreen()
@@ -100,6 +99,7 @@ for i, block in enumerate(spectral_expectation_blocks):
         print(i,j)
         exp.data.add([cue_freq, SOA, target_freq, key, rt])
 
+# Escape
 keys = exp.keyboard.check()
 if expyriment.misc.constants.K_ESCAPE in keys:
     expyriment.control.end()

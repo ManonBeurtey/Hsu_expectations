@@ -1,0 +1,29 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed May 01 2024 12:32:30
+#sha1: bc2502
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+377,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+377,design,logged,
+377,Experiment,started
+422,Stimulus,presented,0
+1382,Keyboard,received,32,wait
+1417,Stimulus,presented,1
+1417,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_ciynf9zz\\freq1318_dur150.0_d32yucue.wav'
+2667,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_ciynf9zz\\freq1822_dur50.0_7syqryt3.wav'
+3238,Keyboard,received,32,wait
+4488,stdout,received,'0 0'
+4514,stderr,received,'Traceback (most recent call last):'
+4514,stderr,received,'  File "code.py", line 99, in <module>'
+4515,stderr,received,'    key, rt = run_trial(cue_freq, SOA, target_freq)'
+4515,stderr,received,'  File "code.py", line 80, in run_trial'
+4515,stderr,received,'    expyriment.control.start(skip_ready_screen=True)'
+4515,stderr,received,'  File "C:\\Users\\manon\\anaconda3\\envs\\expyriment\\lib\\site-packages\\expyriment\\control\\_experiment_control.py", line 73, in start'
+4516,stderr,received,'    raise Exception("Experiment is already started!")'
+4516,stderr,received,'Exception: Experiment is already started!'
+4518,Data,saved

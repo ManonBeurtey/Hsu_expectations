@@ -1,0 +1,18 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed May 01 2024 13:01:20
+#sha1: 04114b
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+370,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+371,design,logged,
+371,Experiment,started
+415,Stimulus,presented,0
+15198,Experiment,paused
+15217,Stimulus,presented,3
+16138,Keyboard,received,y,wait_char
+16138,Experiment,ended

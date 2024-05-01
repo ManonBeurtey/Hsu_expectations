@@ -13,3 +13,4 @@ Code:
 * Making "get_trial_parameters" function linking blocks/trials with sitmuli
 * Making "run_trial" function linking stimuli with tones loading and presenting, runnning experiment
 * Running experiment making for loop in order to link everything together
+* Escape the experiment

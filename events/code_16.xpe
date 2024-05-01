@@ -1,0 +1,21 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Tue Apr 30 2024 15:01:15
+#sha1: a8cefe
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+855,Stimulus,presented,0
+3872,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+3873,design,logged,
+3873,Experiment,started
+3873,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_9ppzkv6t\\freq1046_dur150.0_xk66fd8h.wav'
+6023,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_9ppzkv6t\\freq2224_dur50.0_czs02p1z.wav'
+8029,Keyboard,received,32,wait
+8030,stderr,received,'Traceback (most recent call last):'
+8030,stderr,received,'  File "code.py", line 103, in <module>'
+8032,stderr,received,'    key, response_time = run_trial(cue_freq, SOA, target_freq)'
+8032,stderr,received,'ValueError: too many values to unpack (expected 2)'

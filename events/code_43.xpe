@@ -1,0 +1,48 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed May 01 2024 14:54:17
+#sha1: 023c82
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+604,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+604,design,logged,
+604,Experiment,started
+651,Stimulus,presented,0
+1578,Keyboard,received,32,wait
+1631,Stimulus,presented,1
+1632,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1046_dur150.0_m1x0redp.wav'
+3457,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_ntibgt6y.wav'
+4218,Keyboard,received,32,wait
+5469,stdout,received,'0 0'
+5515,Stimulus,presented,1
+5515,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1318_dur150.0_ezlwvbn2.wav'
+6765,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_pjdidos8.wav'
+7682,Keyboard,received,32,wait
+8932,stdout,received,'0 1'
+8974,Stimulus,presented,1
+8974,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1046_dur150.0_8qfby9ws.wav'
+10799,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_jibb99pr.wav'
+11178,Keyboard,received,32,wait
+12428,stdout,received,'0 2'
+12468,Stimulus,presented,1
+12468,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1318_dur150.0_ih91zobn.wav'
+13718,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_t5_exu0t.wav'
+14342,Keyboard,received,32,wait
+15592,stdout,received,'0 3'
+15632,Stimulus,presented,1
+15632,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1318_dur150.0_vsoenyrp.wav'
+16882,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_sdly087n.wav'
+18702,Keyboard,received,108,wait
+19952,stdout,received,'0 4'
+19993,Stimulus,presented,1
+19993,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1318_dur150.0_da20z0z8.wav'
+21243,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_x6138u4t\\freq1975_dur50.0_x_idkui_.wav'
+22625,Experiment,paused
+22632,Stimulus,presented,15
+23181,Keyboard,received,y,wait_char
+23181,Experiment,ended
+23376,Data,saved

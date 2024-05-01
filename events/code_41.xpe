@@ -1,0 +1,68 @@
+#Expyriment 0.10.0 (Python 3.7.16), .xpe-file, coding: cp1252
+#date: Wed May 01 2024 14:44:23
+#sha1: f518e5
+#modules: 
+#display: size=(800, 600), window_mode=True, open_gl=2
+#os: uname_result(system='Windows', node='T2', release='10', version='10.0.22621', machine='AMD64', processor='Intel64 Family 6 Model 122 Stepping 1, GenuineIntel')
+Time,Type,Event,Value,Detail,Detail2
+1065,design,log,
+#design: #exp: Hsu task
+#design: #dvn: Cue,SOA,target,key,response time
+#design: block_cnt,block_id,trial_cnt,trial_id
+1065,design,logged,
+1065,Experiment,started
+1106,Stimulus,presented,0
+2703,Keyboard,received,32,wait
+2827,Stimulus,presented,1
+2829,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1046_dur150.0_eggfzf1a.wav'
+4979,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_wkxnk0_f.wav'
+5496,Keyboard,received,100,wait
+6746,stdout,received,'0 0'
+6803,Stimulus,presented,1
+6804,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1046_dur150.0_srxiok2y.wav'
+8954,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_5dvhp65q.wav'
+12031,Keyboard,received,32,wait
+13281,stdout,received,'0 1'
+13325,Stimulus,presented,1
+13326,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1318_dur150.0_fvg985nm.wav'
+14576,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_56513o99.wav'
+15349,Keyboard,received,32,wait
+16599,stdout,received,'0 2'
+16643,Stimulus,presented,1
+16643,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1046_dur150.0_l4298we4.wav'
+18793,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_yccwsghu.wav'
+21021,Keyboard,received,32,wait
+22271,stdout,received,'0 3'
+22312,Stimulus,presented,1
+22312,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1318_dur150.0_qreeha_6.wav'
+23562,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_s59b3vwg.wav'
+25152,Keyboard,received,32,wait
+26402,stdout,received,'0 4'
+26490,Stimulus,presented,1
+26491,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1318_dur150.0_ixb19417.wav'
+27741,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_1qood7h1.wav'
+28878,Keyboard,received,32,wait
+30128,stdout,received,'0 5'
+30169,Stimulus,presented,1
+30170,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1318_dur150.0_jvveyqnk.wav'
+31420,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_elqskkl3.wav'
+32496,Keyboard,received,32,wait
+33746,stdout,received,'0 6'
+33790,Stimulus,presented,1
+33790,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1046_dur150.0_aifo8nby.wav'
+35940,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_3593si1u.wav'
+36125,Keyboard,received,32,wait
+37375,stdout,received,'0 7'
+37415,Stimulus,presented,1
+37415,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1046_dur150.0_tihuazet.wav'
+39565,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_6orfsd3a.wav'
+43562,Keyboard,received,32,wait
+44812,stdout,received,'0 8'
+44854,Stimulus,presented,1
+44855,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1318_dur150.0_r_tnqr5n.wav'
+46105,Stimulus,played,b'C:\\Users\\manon\\AppData\\Local\\Temp\\expyriment_lg3629ws\\freq1975_dur50.0_dn4kwkl4.wav'
+48013,Experiment,paused
+48029,Stimulus,presented,23
+48615,Keyboard,received,y,wait_char
+48615,Experiment,ended
+48625,Data,saved
