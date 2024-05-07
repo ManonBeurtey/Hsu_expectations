@@ -11,6 +11,8 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
                                              " You will hear pairs of tones. "
                                              "Press the SPACEBAR as quickly as possible upon hearing the second tone. " 
                                              "Press ENTER to start", text_font= "Monospace")
+instructions_break = expyriment.stimuli.TextScreen("Break", 
+                                             " You can take a break. Press ENTER to go back to the experiment ",text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
 # Fixation crosses
@@ -113,12 +115,18 @@ for i, block in enumerate(spectral_expectation_blocks):
         print(i,j)
         exp.data.add([cue_freq, SOA, target_freq, key, rt])
 
+        if j == N:
+            instructions_break.present()        
+            exp.keyboard.wait(keys=[expyriment.misc.constants.K_RETURN])
+
 # Escape
 keys = exp.keyboard.check()
 if expyriment.misc.constants.K_ESCAPE in keys:
     expyriment.control.end()
     print("Experiment terminated by the participant.")
     exit()
+
+expyriment.control.end()
 
 
 
