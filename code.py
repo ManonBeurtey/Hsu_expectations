@@ -13,7 +13,8 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
                                              "Press ENTER to start", text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
-blankscreen = expyriment.stimuli.BlankScreen()
+cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4)
+cross.preload()
 
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
@@ -35,8 +36,9 @@ def steps(start_range1, stop_range1, start_range2, stop_range2, number):
 
 # Variables
 N = 100 # number of trials
+ITI = random.randint(1250, 1500) # Intertrial duration
 target_duration = 50 
-cue_duration = 150
+cue_duration = 250
 
 high_cue_freq = 1318 # Cues frequencies
 low_cue_freq = 1046
@@ -71,23 +73,26 @@ def get_trial_parameters(spectral, temporal):
             target_freq = tar
     return cue_freq, SOA, target_freq
 
-def run_trial(cue_freq, SOA, target_freq): # à changer avec expyriment
+def run_trial(cue_freq, SOA, target_freq):
+    cross.present()
     cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
     cue_sound.preload()
     target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
-    target_sound.preload()    
-    blankscreen.present()
+    target_sound.preload()      
     cue_sound.present()
     exp.clock.wait(SOA)
+    cross.present
     target_sound.present()
     key, rt = exp.keyboard.wait()
-    exp.clock.wait(1250)
+    exp.clock.wait(ITI)
+    cross.present()
     return key, rt
 
 # Running experiment
 expyriment.control.start(skip_ready_screen=True)
 instructions.present()
 exp.keyboard.wait()
+cross.present()
 
 for i, block in enumerate(spectral_expectation_blocks):
     spectral_expectation_value = block 
