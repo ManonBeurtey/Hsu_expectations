@@ -13,8 +13,14 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
                                              "Press ENTER to start", text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
-cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4)
+# Original cross
+cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_WHITE)
 cross.preload()
+
+# Detection cross
+cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_RED)
+cross_red.preload()
+
 
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
@@ -75,15 +81,22 @@ def get_trial_parameters(spectral, temporal):
 
 def run_trial(cue_freq, SOA, target_freq):
     cross.present()
-    cue_sound = expyriment.stimuli.Tone(cue_duration, frequency = cue_freq)
+    cue_sound = expyriment.stimuli.Tone(cue_duration, frequency=cue_freq)
     cue_sound.preload()
-    target_sound = expyriment.stimuli.Tone(target_duration, frequency = target_freq)
-    target_sound.preload()      
+    target_sound = expyriment.stimuli.Tone(target_duration, frequency=target_freq)
+    target_sound.preload()
     cue_sound.present()
     exp.clock.wait(SOA)
-    cross.present
+    
+    target_presentation_time = exp.clock.time
     target_sound.present()
-    key, rt = exp.keyboard.wait()
+    key, rt = exp.keyboard.wait(duration=2000)    
+    
+    if key and (exp.clock.time - target_presentation_time < 2000):
+        cross_red.present() 
+        exp.clock.wait(100)  
+        cross.present()
+
     exp.clock.wait(ITI)
     cross.present()
     return key, rt
