@@ -13,14 +13,12 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
                                              "Press ENTER to start", text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","target","key","response time"]
-# Original cross
-cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_WHITE)
+# Fixation crosses
+cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_WHITE) # Original cross
 cross.preload()
 
-# Detection cross
-cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_RED)
+cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_RED) # Detection cross
 cross_red.preload()
-
 
 # BLOCKS
 spectral_expectation = ["fixed_spectral", "variable_spectral"]
@@ -55,7 +53,6 @@ variable_SOA = steps(350, 950, 1550, 2150, 3)
 fixed_target_freq = 1975 # Targets frequencies
 variable_target_freq = steps(1725, 1925, 2025, 2225, 5)
 
-
 # Lists variable SOA and variable targets
 variable_target_list = variable_target_freq * (N//2)
 random.shuffle(variable_target_list)
@@ -63,7 +60,7 @@ random.shuffle(variable_target_list)
 variable_SOA_list = variable_SOA * (N//2)
 random.shuffle(variable_SOA_list)
 
-
+# Functions
 def get_trial_parameters(spectral, temporal):
     if temporal == "fixed_SOA":
         cue_freq = high_cue_freq
@@ -91,7 +88,6 @@ def run_trial(cue_freq, SOA, target_freq):
     target_presentation_time = exp.clock.time
     target_sound.present()
     key, rt = exp.keyboard.wait(duration=2000)    
-    
     if key and (exp.clock.time - target_presentation_time < 2000):
         cross_red.present() 
         exp.clock.wait(100)  
