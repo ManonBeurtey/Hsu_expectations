@@ -111,7 +111,7 @@ for i, block in enumerate(spectral_expectation_blocks):
         print(i,j)
         exp.data.add([cue_freq, SOA, target_freq, key, rt, ITI])
 
-        if j == N:
+        if j == (N-1):
             instructions_break.present()        
             exp.keyboard.wait(keys=[expyriment.misc.constants.K_RETURN])
 
