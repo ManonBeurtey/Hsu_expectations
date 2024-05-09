@@ -53,10 +53,10 @@ fixed_target_freq = 1975 # Targets frequencies
 variable_target_freq = steps(1725, 1925, 2025, 2225, 5, 5) # 10 steps in total
 
 # Lists variable SOA and variable targets
-variable_target_list = variable_target_freq * (N//10)
+variable_target_list = variable_target_freq * 5
 random.shuffle(variable_target_list)
 
-variable_SOA_list = variable_SOA * (N//20)
+variable_SOA_list = variable_SOA * 10
 random.shuffle(variable_SOA_list)
 
 # Functions
