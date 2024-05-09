@@ -23,11 +23,11 @@ cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expy
 cross_red.preload()
 
 # BLOCKS
-spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
-random.shuffle(spectral_expectation_blocks) # 12 blocks counterbalanced
+spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*5
+random.shuffle(spectral_expectation_blocks) # 10 blocks counterbalanced
 
 # TRIALS
-temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*50
+temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*60 # 120 trials 
 
 # Logarithmic steps for low expectations conditions (SOA and target)
 def steps(start_range1, stop_range1, start_range2, stop_range2, number1, number2):
@@ -39,7 +39,7 @@ def steps(start_range1, stop_range1, start_range2, stop_range2, number1, number2
     return ranged_int_list
 
 # Variables
-N = 100 # number of trials
+N = 120 # number of trials
 target_duration = 50 
 cue_duration = 250
 
@@ -47,13 +47,13 @@ high_cue_freq = 1318 # Cues frequencies
 low_cue_freq = 1046
 
 fixed_SOA = 1250 # SOA duration
-variable_SOA = steps(350, 950, 1550, 2150, 3, 2) # 5 steps in total
+variable_SOA = steps(350, 950, 1550, 2150, 3, 3) # 6 steps in total
 
 fixed_target_freq = 1975 # Targets frequencies
 variable_target_freq = steps(1725, 1925, 2025, 2225, 5, 5) # 10 steps in total
 
 # Lists variable SOA and variable targets
-variable_target_list = variable_target_freq * 5
+variable_target_list = variable_target_freq * 6
 random.shuffle(variable_target_list)
 
 variable_SOA_list = variable_SOA * 10
