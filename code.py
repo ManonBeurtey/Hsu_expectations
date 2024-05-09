@@ -15,6 +15,7 @@ instructions_break = expyriment.stimuli.TextScreen("Break",
                                              " You can take a break. Press ENTER to go back to the experiment ",text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","Target","Key","RT", "ITI"]
+
 # Fixation crosses
 cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_WHITE) # Original cross
 cross.preload()
@@ -22,11 +23,10 @@ cross.preload()
 cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_RED) # Detection cross
 cross_red.preload()
 
-# BLOCKS
-spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*5
-random.shuffle(spectral_expectation_blocks) # 10 blocks counterbalanced
+# Blocks & Trials
+spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
+random.shuffle(spectral_expectation_blocks) # 12 blocks counterbalanced
 
-# TRIALS
 temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*60 # 120 trials 
 
 # Logarithmic steps for low expectations conditions (SOA and target)
