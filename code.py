@@ -53,14 +53,14 @@ fixed_target_freq = 1975 # Targets frequencies
 variable_target_freq = steps(1725, 1925, 2025, 2225, 5, 5) # 10 steps in total
 
 # Lists variable SOA and variable targets
-variable_target_list = variable_target_freq * 6
-random.shuffle(variable_target_list)
-
 variable_SOA_list = variable_SOA * 10
 random.shuffle(variable_SOA_list)
 
+variable_target_list = variable_target_freq * 6
+random.shuffle(variable_target_list)
+
 # Functions
-def get_trial_parameters(spectral, temporal, trial_index, block_index):
+def get_trial_parameters(spectral, temporal, trial_index):
     if temporal == "fixed_SOA":
         cue_freq = high_cue_freq
         SOA = fixed_SOA
@@ -70,7 +70,7 @@ def get_trial_parameters(spectral, temporal, trial_index, block_index):
     if spectral == "fixed_spectral":
         target_freq = fixed_target_freq
     else: # variable spectral
-        target_freq = variable_target_list[block_index % len(variable_target_list)]
+        target_freq = variable_target_list[trial_index % len(variable_target_list)]
     return cue_freq, SOA, target_freq
 
 def run_trial(cue_freq, SOA, target_freq):
@@ -106,7 +106,7 @@ for i, block in enumerate(spectral_expectation_blocks):
     random.shuffle(temporal_expectation_trials)
     for j, trial in enumerate(temporal_expectation_trials):
         temporal_expectation_value = trial
-        cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value, j,i)
+        cue_freq, SOA, target_freq  = get_trial_parameters(spectral_expectation_value, temporal_expectation_value, j)
         key, rt, ITI = run_trial(cue_freq, SOA, target_freq)
         print(i,j)
         exp.data.add([cue_freq, SOA, target_freq, key, rt, ITI])
