@@ -7,12 +7,17 @@ import numpy
 exp = expyriment.design.Experiment(name="Hsu task") 
 expyriment.control.set_develop_mode(on=True)
 expyriment.control.initialize(exp)
+
 instructions = expyriment.stimuli.TextScreen("Instructions", 
                                              " You will hear pairs of tones. "
                                              "Press the SPACEBAR as quickly as possible upon hearing the second tone. " 
                                              "Press ENTER to start", text_font= "Monospace")
+
 instructions_break = expyriment.stimuli.TextScreen("Break", 
                                              " You can take a break. Press ENTER to go back to the experiment ",text_font= "Monospace")
+
+instructions_end = expyriment.stimuli.TextScreen("It's finished", 
+                                             " Thank you for your time ",text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","Target","Key","RT", "ITI"]
 
@@ -90,7 +95,8 @@ def run_trial(cue_freq, SOA, target_freq):
         exp.clock.wait(100)  
         cross.present()
 
-    ITI = random.randint(1250, 1500) # Intertrial duration
+    ITI = int(numpy.random.normal(1375, 62.5))
+    ITI = max(min(ITI, 1500), 1250)
     exp.clock.wait(ITI)
     cross.present()
     return key, rt, ITI
@@ -117,11 +123,12 @@ for i, block in enumerate(spectral_expectation_blocks):
 
 # Escape
 keys = exp.keyboard.check()
-if expyriment.misc.constants.K_ESCAPE in keys:
+if keys and expyriment.misc.constants.K_ESCAPE in keys:
     expyriment.control.end()
     print("Experiment terminated by the participant.")
     exit()
 
+instructions_end.present()
 expyriment.control.end()
 
 
