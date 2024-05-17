@@ -52,13 +52,13 @@ high_cue_freq = 1318 # Cues frequencies
 low_cue_freq = 1046
 
 fixed_SOA = 1250 # SOA duration
-variable_SOA = steps(350, 950, 1550, 2150, 3, 3) # 6 steps in total
+variable_SOA = steps(350, 950, 1550, 2150, 5, 5) # 10 steps in total
 
 fixed_target_freq = 1975 # Targets frequencies
 variable_target_freq = steps(1725, 1925, 2025, 2225, 5, 5) # 10 steps in total
 
 # Lists variable SOA and variable targets
-variable_SOA_list = variable_SOA * 10
+variable_SOA_list = variable_SOA * 6
 random.shuffle(variable_SOA_list)
 
 variable_target_list = variable_target_freq * 6
