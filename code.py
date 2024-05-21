@@ -25,8 +25,8 @@ exp.data_variable_names = ["Cue","SOA","Target","Key","RT", "ITI"]
 cross = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_WHITE) # Original cross
 cross.preload()
 
-cross_red = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_RED) # Detection cross
-cross_red.preload()
+cross_detection = expyriment.stimuli.FixCross(size=(50, 50), line_width=4, colour=expyriment.misc.constants.C_GREEN) # Detection cross
+cross_detection.preload()
 
 # Blocks & Trials
 spectral_expectation_blocks = ["fixed_spectral", "variable_spectral"]*6
@@ -91,7 +91,7 @@ def run_trial(cue_freq, SOA, target_freq):
     target_sound.present()
     key, rt = exp.keyboard.wait(duration=2000)    
     if key and (exp.clock.time - target_presentation_time < 2000):
-        cross_red.present() 
+        cross_detection.present() 
         exp.clock.wait(100)  
         cross.present()
 
