@@ -35,13 +35,9 @@ random.shuffle(spectral_expectation_blocks) # 12 blocks counterbalanced
 temporal_expectation_trials = ["fixed_SOA","variable_SOA"]*60 # 120 trials 
 
 # Logarithmic steps for low expectations conditions (SOA and target)
-def steps(start_range1, stop_range1, start_range2, stop_range2, number1, number2):
-    start1 = numpy.log10(start_range1)
-    end1 = numpy.log10(stop_range1)
-    start2 = numpy.log10(start_range2)
-    end2 = numpy.log10(stop_range2)
-    ranged_int_list = list(numpy.int_(numpy.concatenate((numpy.logspace(start1, end1, num=number1), numpy.logspace(start2, end2, num=number2)))))
-    return ranged_int_list
+def log_steps(start_freq, end_freq, num_steps, avoid_values):
+    log_steps = numpy.int_(numpy.logspace(numpy.log10(start_freq), numpy.log10(end_freq), num=num_steps))
+    return [step for step in log_steps if not any(numpy.isclose(step, value, atol=50) for value in avoid_values)]
 
 # Variables
 N = 120 # number of trials
@@ -52,10 +48,10 @@ high_cue_freq = 1318 # Cues frequencies
 low_cue_freq = 1046
 
 fixed_SOA = 1250 # SOA duration
-variable_SOA = steps(350, 950, 1550, 2150, 5, 5) # 10 steps in total
+variable_SOA = log_steps(350, 2150, 10, [1250]) # 10 steps in total
 
 fixed_target_freq = 1975 # Targets frequencies
-variable_target_freq = steps(1725, 1925, 2025, 2225, 5, 5) # 10 steps in total
+variable_target_freq = log_steps(2225, 1725, 12, [1975]) # 10 steps in total
 
 # Lists variable SOA and variable targets
 variable_SOA_list = variable_SOA * 6
