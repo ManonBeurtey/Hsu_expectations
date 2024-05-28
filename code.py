@@ -16,8 +16,8 @@ instructions = expyriment.stimuli.TextScreen("Instructions",
 instructions_break = expyriment.stimuli.TextScreen("Break", 
                                              " You can take a break. Press ENTER to go back to the experiment ",text_font= "Monospace")
 
-instructions_end = expyriment.stimuli.TextScreen("It's finished", 
-                                             " Thank you for your time ",text_font= "Monospace")
+instructions_end = expyriment.stimuli.TextScreen("It's finished, well done!", 
+                                             " Thank you for your time. You can call the experimenter. ",text_font= "Monospace")
 
 exp.data_variable_names = ["Cue","SOA","Target","Key","RT", "ITI"]
 
@@ -113,9 +113,13 @@ for i, block in enumerate(spectral_expectation_blocks):
         print(i,j)
         exp.data.add([cue_freq, SOA, target_freq, key, rt, ITI])
 
-        if j == (N-1):
+        if i != 11 and j == (N-1):
             instructions_break.present()        
             exp.keyboard.wait(keys=[expyriment.misc.constants.K_RETURN])
+        if i == 11 and j == (N-1):
+            instructions_end.present()
+            exp.keyboard.wait(keys=[expyriment.misc.constants.K_RETURN])
+            expyriment.control.end()
 
 # Escape
 keys = exp.keyboard.check()
@@ -124,7 +128,6 @@ if keys and expyriment.misc.constants.K_ESCAPE in keys:
     print("Experiment terminated by the participant.")
     exit()
 
-instructions_end.present()
 expyriment.control.end()
 
 
