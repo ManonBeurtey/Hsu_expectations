@@ -4,9 +4,7 @@ Hsu, Y.-F., Hämäläinen, J. A., & Waszak, F. (2013). Temporal expectation and 
 
 
 **Experimental design**: 
-Detection task, 2 by 2 whithin subject, manipulating temporal expectations (low/high) and spectral expectations (low/high). 
-
-Two cue tones of distinct frequencies (1318 Hz and 1046 Hz; 250 ms duration) are associated to the following time-interval ("SOA") between cue and target, creating the conditions of high and low temporal expectation. 
+Detection task, 2 by 2 whithin subject, manipulating temporal expectations (low/high) and spectral expectations (low/high). Two cue tones of distinct frequencies (1318 Hz and 1046 Hz; 250 ms duration) are associated to the following time-interval ("SOA") between cue and target, creating the conditions of high and low temporal expectation. 
 
 **In the condition of high temporal expectation**, the time interval (SOA) is FIXED and always 1250ms, in the low temporal condition, the time interval is VARIABLE and was chosen in a range from 350 to 2150 ms, with logarithmic 10 steps between each, and avoiding the 1250 ms duration (and 50ms above and below). 
 
