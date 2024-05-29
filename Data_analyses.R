@@ -42,7 +42,9 @@ big_data = big_data %>%
 # Removing outliers 
 SD = sd(big_data$RT)
 µ = mean(big_data$RT)
+
 #borne_inf = µ-3*SD
+
 borne_sup = µ+3*SD
 
 data <- big_data %>%
@@ -80,7 +82,6 @@ mean_values <- data %>%
   summarize(RT = mean(RT))
 
 meanRTs <- mean(data$RT)
-meanRTs
 
 # GGplots
 ggplot(data, aes(x=RT)) + 
@@ -127,7 +128,7 @@ ggplot(data, aes(x = Spectral_condition, y = RT)) +
        y = "Response time",
        caption = "...")
 
-## Interaction
+## Interaction effect
 ggplot(mean_values, aes(x = Spectral_condition, y = RT, color = Temporal_condition, group = Temporal_condition)) +
   geom_point(size=2) +
   geom_line(lty=2, lwd=1) +
@@ -137,7 +138,7 @@ ggplot(mean_values, aes(x = Spectral_condition, y = RT, color = Temporal_conditi
        x = "Levels of Spectral Condition",
        y = "Mean Response Time")
 
-# Statistical analyses wih t.test
+# Statistical analyses with t.test
 t.test(data$RT[data$Temporal_condition == "Fixed"], data$RT[data$Temporal_condition == "Variable"])
 t.test(data$RT[data$Spectral_condition == "Fixed"], data$RT[data$Spectral_condition == "Variable"])
 
@@ -145,12 +146,15 @@ t.test(data$RT[data$Spectral_condition == "Fixed"], data$RT[data$Spectral_condit
 model <- aov(RT ~ Temporal_condition * Spectral_condition, data = data)
 summary(model)
 
+
+# Assessing ITI and RTs' correlation
+
 model2 <- lm(RT ~ ITI, data = data)
 summary(model2)
 
 ggplot(data, aes(x = RT, y = ITI)) + 
-  geom_point() +  # Ajouter un nuage de points
-  geom_smooth(method = "lm", se = TRUE, color = "blue") +  # Ajouter la ligne de régression linéaire
+  geom_point() +  
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +  
   labs(title = "Linear regression between RT and intertrial duration",
        x = "response time",
        y = "intertrial duration")
